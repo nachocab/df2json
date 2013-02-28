@@ -33,6 +33,14 @@ prepare_for_JSON <- function(data){
     as.data.frame(data)
 }
 
+
+#' Convert a dataframe to JSON
+#'
+#' @param data input dataframe object
+#' @export
+#' @examples library(df2json)
+#' df <- data.frame(name=c("a", "b", "c"), x=c(NA, 2 ,3), y=c(10, 20, -Inf), show=c(TRUE, FALSE, TRUE))
+#' df2json(df)
 df2json <- function(data){
     data <- prepare_for_JSON(data)
     objects <- apply(data, 1, function(row) {paste(row, collapse = ',')})
