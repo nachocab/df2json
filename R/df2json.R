@@ -36,6 +36,7 @@ prepare_for_JSON <- function(data){
 
 #' Convert a dataframe to JSON
 #'
+#'
 #' @param data input dataframe object
 #' @export
 #' @examples library(df2json)
