@@ -37,16 +37,31 @@ prepare_for_JSON <- function(data){
 #' Convert a dataframe to JSON
 #'
 #'
-#' @param data input dataframe object
+#' @param df input dataframe object
 #' @export
 #' @examples library(df2json)
 #' df <- data.frame(name=c("a", "b", "c"), x=c(NA, 2 ,3), y=c(10, 20, -Inf), show=c(TRUE, FALSE, TRUE))
 #' df2json(df)
-df2json <- function(data){
-    data <- prepare_for_JSON(data)
-    objects <- apply(data, 1, function(row) {paste(row, collapse = ',')})
+df2json <- function(df){
+    df <- prepare_for_JSON(df)
+    objects <- apply(df, 1, function(row) {paste(row, collapse = ',')})
     objects <- paste0('{', objects, '}')
     objects <- paste0('[', paste(objects, collapse = ',\n'), ']')
 
     objects
+}
+
+#' Convert a matrix to JSON
+#'
+#'
+#' @param mat input matrix object
+#' @export
+#' @import rjson
+#' @examples library(df2json)
+#' df <- m <- matrix(1:9, byrow = TRUE, nrow=3)
+#' matrix2json(df)
+matrix2json <- function(mat){
+    mat <- as.list(as.data.frame(t(mat)))
+    names(mat) <- NULL
+    toJSON(mat)
 }

@@ -4,10 +4,10 @@
 \alias{df2json-package}
 \title{df2json}
 \usage{
-  df2json(data)
+  df2json(df)
 }
 \arguments{
-  \item{data}{input dataframe object}
+  \item{df}{input dataframe object}
 }
 \description{
   df2json
